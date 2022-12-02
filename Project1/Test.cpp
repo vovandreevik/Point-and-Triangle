@@ -16,8 +16,8 @@ bool isEqualSquare(Triangle& t1, Triangle& t2);
 
 int main()
 {
-    std::cout << "Test for class Point \n";
-    float minnimalDistance = 2e30, k = 7;
+    std::cout << "Enter the coordinates of points: \n";
+    float minnimalDistance = 2e30, k = 7, radius = 250;
     Point point(0.0, 0.0), test(9, 12), res(0.0, 0.0), origin(0.0, 0.0);
 
     while (true) {
@@ -57,33 +57,36 @@ int main()
     std::cout << "Is equal with (9; 12)? Result: " << point.isEqual(test) << '\n';
     std::cout << "Distance to (9; 12): " << point.getDistance(test) << '\n';
     point.move(k);
-    std::cout << "Cordinates after moving ("<< k << "): "; outputPoint(std::cout, point); std::cout << "\n\n";
+    std::cout << "Cordinates after moving ("<< k << "): "; outputPoint(std::cout, point); std::cout << "\n";
+    std::cout << "Is the test point belongs to the circle with radius " << radius << "? Result: " << isPointInCircle(radius, test) <<"\n\n";
+
     res.~Point();
     point.~Point();
     test.~Point();
 
     std::cout << "Working with the Triangle \n";
     Triangle a(Point(3, 3), Point(2, 2), Point(4, 2));
-    Triangle b(Point(3, 3), Point(-782, 2), Point(42, 32));
-    Triangle c(Point(18, 24), Point(23, 18), Point(18213, 324324324));
+    Triangle b(Point(3, 3), Point(2, 2), Point(4, 2));
+    Triangle c(Point(0, 0), Point(5, 0), Point(2, 0));
 
     std::cout << "first triangle:"; outputTriangle(std::cout, a); std::cout << '\n';
     std::cout << "second triangle: "; outputTriangle(std::cout, b); std::cout << '\n';
     std::cout << "third triangle: "; outputTriangle(std::cout, c); std::cout << "\n\n";
 
-    a.move(k);
-    std::cout << "first triangle after moving ("<<k<<"): "; outputTriangle(std::cout, a); std::cout << "\n";
+    c.move(k);
+    std::cout << "third triangle after moving ("<<k<<"): "; outputTriangle(std::cout, c); std::cout << "\n";
+
+
     
     std::cout << "Square of the first triangle: " << a.square() << '\n';
-    std::cout << "Perimeter of the second triangle: " << b.getPerimeter() << "\n\n";
+    std::cout << "Perimeter of the second triangle: " << b.getPerimeter() << "\n";
 
     std::cout << "Is the first triangle?  Result: " << a.isTriangle() << '\n';
-    std::cout << "Is the third triangle? Result: " << c.isTriangle() << "\n\n";
+    std::cout << "Is the third triangle? Result: " << c.isTriangle() << "\n";
 
-    std::cout << "Is the first triangle equal the third triangle? Result: " << a.isEqual(b) << "\n\n";
+    std::cout << "Is the first triangle equal the second triangle? Result: " << a.isEqual(b) << "\n";
 
     std::cout << "Is equal square of the first triangle and square of the second triangle? Result: " << isEqualSquare(a, b) << '\n';
-    std::cout << "Is equal square of the first triangle and square of the third triangle? Result: " << isEqualSquare(a, c) << "\n\n";
 
     a.~Triangle();
     b.~Triangle();

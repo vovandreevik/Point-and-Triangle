@@ -5,7 +5,6 @@ class Point
 private:
 	float x_, y_;
 
-
 public:
 	Point();
 	Point(float x, float y);
